@@ -1,0 +1,44 @@
+%*******10********20********30********40********50********60********70********80
+
+%For all chapters, use the newdefined chap{} instead of chapter{}
+% This will make the text at the top-left of the page be the same as the chapter
+
+\chap{Project Documentation}
+
+\section{Project organization and testing}
+As a starting point, the main Scene and Controller handling server selection and user login, as well as the functionality to set and switch between scenes was implemented. \\
+On the top of these fundamental construct, the login screen was adapted from the previous exercises was adapted and the rest of the application function was split between the 3 main screens ("Vocabulary", "Learning", and "Goals") and style and design was added by extending the .css file and adding icons, designs etc. \\
+In each developmental area a GUI implementing the required features was designed and the required internal data-structures, interfaces between screens, and API communication were determined and implemented as needed. \\
+The generated code was manually tested by the specified use-cases.
+
+\section{Project Responsibilities and Contributions}
+
+The project was split amongst the frames within in the application. Responsibilities were distributed as following:
+
+\begin{itemize}
+    \item *** was responsible for %  ~53 punkte
+    \begin{itemize}
+        \item Setting up \textit{Main} class and providing function to change scenes
+        \item Registration frame: Login and register screen (adapted from previous exercise assignments), server selection and connection, waiting animation, Remember-me function, and password encryption
+        \item Application design: Usage of css file and addition of the icons, with the structure and design of MainScene containing the NavigationBar and TitleBar
+        \item API calls (used for Vocabulary learning and management)
+    \end{itemize}
+\item *** was responsible for % ~27 punkte
+    \begin{itemize}
+        \item Vocabulary learning: Learning core functionality and string operations like checking the users answer for mistakes
+    \end{itemize}
+\item *** was responsible for % ~33 punkte
+    \begin{itemize}
+        \item Vocabulary management: Accessing, adding, searching, editing, and deleting Vocabulary entries
+    \end{itemize}
+\item *** was responsible for: % ~21 punkte 
+    \begin{itemize}
+        \item Setting up Gradle project and gitignore
+        \item Selection of vocabulary to learn ("Goals"): Selecting vocabulary to learn and filter by language - the code for the vocabulary \textit{TableView} with check-boxes (\textit{VocabSelection} class and state accessing logic) was re-used for vocabulary management
+        \item Documentation
+    \end{itemize}
+\end{itemize}
+
+Usage of FXML and the respective controllers, internationalization, and asynchronous API calls were realized by each developer individually. \\
+Remaining jointly used functionality, especially, the \textit{Variables} class used for inter-screen communication was developed jointly. 
+

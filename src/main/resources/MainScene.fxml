@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerMainScene" stylesheets="@application.css" styleClass="loginMain">
+	<AnchorPane fx:id="navBox" styleClass="navBox">
+		<VBox styleClass="navBar" fx:id="navBar">
+			<VBox styleClass="imageBox">
+				<ImageView styleClass="logo" fx:id="logo"/>
+			</VBox>
+			<Button fx:id="vocab" styleClass="buttons-nav" onAction="#gotoVocList" text="Vocabulary">
+			</Button>
+			<Button fx:id="learn" styleClass="buttons-nav" onAction="#gotoLearn" text="Learn"/>
+			<Button fx:id="goals" styleClass="buttons-nav" onAction="#gotoGoals" text="Goals"/>
+		</VBox>
+		<Button fx:id="settings" styleClass="settings" onAction="#openSettings"/>
+	</AnchorPane>
+	<VBox AnchorPane.rightAnchor="10.0">
+		<AnchorPane fx:id="userInfo" styleClass="titleBar">
+			<Label fx:id="page" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0" AnchorPane.bottomAnchor="25" styleClass="page"/>
+			<HBox styleClass="userInfo" AnchorPane.rightAnchor="10.0">
+				<Label fx:id="loginAs" styleClass="logged"/>
+				<Button onAction="#logout" fx:id="logout" styleClass="bLogout"/>
+			</HBox>
+		</AnchorPane>
+		<VBox styleClass="mainContentFrame" fx:id="mainContentFrame">
+			<BorderPane styleClass="mainContent" fx:id="mainContent">
+			</BorderPane>
+		</VBox>
+	</VBox>
+</HBox>
+

@@ -1,0 +1,44 @@
+%*******10********20********30********40********50********60********70********80
+
+% For all chapters, use the newdefined chap{} instead of chapter{}
+% This will make the text at the top-left of the page be the same as the chapter
+
+\chap{System Documentation}
+
+\section{Software Structure and Components}
+The initial Scene of the program is set in the \textit{Main} Class, which implements Scene launching and handles Scene switching.\\
+The Login and Register Pane is encoded in \textit{FXLogin.fxml} and controlled by the 
+\textit{ControllerLogWindow}
+Login or register requests triggered by the user's insertions of eMail and password to the respective text fields are handled via the \textit{APICalls} class.\\
+Upon successful log-in in or registration the controller \textit{ControllerMainScene} is initialized and loads \textit{MainScene.fxml}. Also, the global variables of the program are initialized in the \textit{Variables} class, which is used for inter-scene data exchange and communication. I.a. the user's vocabulary is retrieved from the API and stored locally to allow for a faster access.
+Additionally, the user's password is encrypted using the \textit{Crypt} class via AES encryption so eMail and the encrypted password are stored as \textit{logInfo.json}. Hence, the password can be restored and decrypted using the set key, which is initially generated using the users Mac-Address.\\
+The \textit{MainScene} contains a navigation bar with the logo, a title bar and a \textit{BorderPane} for the main content.
+It sets the stage for all the other components and windows of the program, by having the before mentioned \textit{BorderPane} which is able to be set to different controllers extending \textit{AnchorPane}. These are:
+\begin{itemize}
+    \item \textbf{ControllerVocList}: Displays vocabulary and uses the \textit{Variables} class to get the user's initial list of vocabulary by calling \textit{APICalls} 
+    \begin{itemize}
+        \item \textbf{ControllerVocabAdd}: Displays a stage where the user can add new entries
+    \end{itemize}
+    \item \textbf{ControllerGoals}: The user can select which vocables to learn. For an instant response it first uses the local copy of the vocabulary but also triggers a API call to the update the list
+    \item \textbf{ControllerLearning}: Handles the learning processes by iterating through the entries selected in the "Goals" menu or alternatively all entries. Correctness of the inserted answer is calculated by the Levenshtein distance between inserted and correct answer: A distance of 0 is graded as fully correct, 1 as partially correct, and greater than 1 as wrong. \\ 
+    All answers are pushed to list to show at the end of learning process and the phase is edited by an asynchronous API request.
+    \item \textbf{Controller settings}: It contains the user settings (currently only the menu language). It features an "Apply" button which uses the \textit{SettingsChanger} class to store the settings as "Settings.json". This file can be loaded by the \textit{LocalizationManager} class to restore the settings after the start of the application.
+\end{itemize}
+The \textit{SettingsChanger} class needs be called to reload the whole current stage to apply Settings.\\
+The \textit{LocalizationManager} class is used to store all translations for all the elements of the program in each language, which in turn is stored in another HashMap containing all the languages.
+The HashMap can then be accessed with a method to get different entries and use their values to set labels and descriptions.\\
+\\
+The \textit{User} class is used to pass User information around, especially for the title bar in \textit{MainScene}.\\
+The \textit{Vocab} class is used to provide a structure for formatted JSON bodies from the API. It is used as a (super) class for all objects representing vocables throughout the program. Only some of its fields are marked with \textit{ @Exposed}, since ID and Phase are not needed for posting vocables to the API.\\
+Instances of \textit{VocabSelection} are used in \textit{Goals} and \textit{VocabSelection}, in order to extend the \textit{Vocab} class with a check box to select individual entries.
+
+\section{Tools, Frameworks, and Libraries}
+\begin{itemize}
+    \item The project is based on \textbf{Gradle} to manage dependencies and provide a structure
+    \item The \textbf{JavaFX} was used to realize all GUI elements
+    \item \textbf{OkHttpClient} is used to for connection to the API
+    \item \textbf{Gson} is used to transfer objects between the client and the server as defined in the API
+    \item \textbf{Jackson} is used to create lists from Json strings
+    \item \textbf{Filewriter} to write Json to the file system
+    \item \textbf{Lists} and \textbf{HashMaps} are used to store and pass Information and Objects
+\end{itemize}

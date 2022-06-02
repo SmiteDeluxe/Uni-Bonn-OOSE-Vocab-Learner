@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="400.0" prefWidth="600.0" type="AnchorPane">
+    <HBox styleClass="setts" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0">
+        <Label text="Language:" styleClass="listSetts" fx:id="listSetts1"/>
+        <ComboBox styleClass="langDD" fx:id="langDD"/>
+    </HBox>
+    <Button fx:id="apply" styleClass="b" text="Apply" onAction="#apply" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"/>
+</fx:root>
