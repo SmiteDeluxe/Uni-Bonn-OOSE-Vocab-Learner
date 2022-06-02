@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.layout.BorderPane?>
+<fx:root prefHeight="400.0" prefWidth="600.0" styleClass="mainGoals" stylesheets="@application.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane styleClass="cont" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+        <ComboBox fx:id="languageFilterComboBox" onAction="#languageSelected" prefHeight="25.0" prefWidth="173.0" promptText="Filter Language" styleClass="classicButton" AnchorPane.leftAnchor="0.0" />
+        <Button fx:id="selectAllButton" mnemonicParsing="false" onAction="#selectAllButtonClicked" prefHeight="26.0" prefWidth="100.0" styleClass="classicButton" text="Select All" AnchorPane.leftAnchor="570.0" />
+        <BorderPane fx:id="toLoad" layoutX="-16.0" layoutY="46.0">
+            <center>
+                <TableView fx:id="vocabTableView"  styleClass="table" />
+            </center>
+        </BorderPane>
+        <Button fx:id="startLearningButton" layoutY="318.0" mnemonicParsing="false" onAction="#startLearningPressed" prefHeight="25.0" prefWidth="265.0" styleClass="b" text="Start Learning" AnchorPane.leftAnchor="0.0" />
+        <Button fx:id="startLearningRandom" layoutX="305.0" layoutY="318.0" mnemonicParsing="false" onAction="#startLearningRandomPressed" prefHeight="25.0" prefWidth="273.0" styleClass="b" text="Start Learning in Random Order" AnchorPane.leftAnchor="415.0" />
+      <Button fx:id="deselectAllButton" AnchorPane.leftAnchor="453" mnemonicParsing="false" onAction="#deselectAllButtonClicked" prefHeight="26.0" prefWidth="100.0" styleClass="classicButton" text="Deselect All" />
+    </AnchorPane>
+</fx:root>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<AnchorPane styleClass="outer" fx:id="outer" stylesheets="@application.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="application.ControllerLogWindow">
+	<VBox fx:id="visualBox">
+		<ImageView styleClass="visualBox"/>
+	</VBox>
+	<BorderPane fx:id="mainLogCont">
+		<center>
+		<VBox styleClass="loginBox" fx:id="loginBox">
+			<HBox styleClass="field">
+				<VBox>
+					<Label fx:id="loginLabel" prefHeight="20.0" prefWidth="61.0" styleClass="userDataField" text="E-Mail:" />
+					<TextField fx:id="mail" styleClass="logins" />
+				</VBox>
+			</HBox>
+			<HBox styleClass="field">
+				<VBox>
+					<Label fx:id="pwLabel" styleClass="userDataField" text="Password:" />
+					<PasswordField fx:id="pw" styleClass="logins" />
+
+				</VBox>
+			</HBox>
+			<VBox styleClass="buttons">
+				<CheckBox fx:id="remember" styleClass="remember" text="Remember me" />
+				<VBox styleClass="logReg">
+					<Button fx:id="login" onAction="#login" styleClass="b" text="Login" />
+					<Button fx:id="reg" onAction="#register" styleClass="b" text="Register" />
+					<Label fx:id="wrongLogin" styleClass="warning" />
+				</VBox>
+			</VBox>
+
+			<HBox>
+				<VBox styleClass="serverField">
+					<TextField fx:id="serverAddress" text="https://api.voc5.org/"/>
+				</VBox>
+			</HBox>
+		</VBox>
+		</center>
+	</BorderPane>
+</AnchorPane>
